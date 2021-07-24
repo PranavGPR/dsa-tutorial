@@ -1,30 +1,31 @@
 package com.src;
 
-import java.util.Arrays;
+// import java.util.Arrays;
 
 public class Array {
 
-    int length = 0;
+    private int count;
+    private int[] items;
 
-    Array(int arrayLength) {
-        length = arrayLength;
+    public Array(int arrayLength) {
+        // count = arrayLength;
+        items = new int[arrayLength];
     }
 
-    int items[] = new int[length];
+    public void insert(int item) {
+        items[count++] = item;
 
-    int bigArray[] = new int[length + 1];
-
-    public void insert(int a) {
-        System.out.println(items.length);
-        for (int i = 0; i < length; i++) {
-            bigArray[i] = items[i];
+        if (items.length == count) {
+            int[] newItems = new int[count * 2];
+            for (int i = 0; i < count; i++) {
+                newItems[i] = items[i];
+                items = newItems;
+            }
         }
-        bigArray[length] = a;
-        System.out.println(Arrays.toString(bigArray));
     }
 
     public void print() {
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < count; i++) {
             System.out.println(items[i]);
         }
     }
