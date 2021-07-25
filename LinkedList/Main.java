@@ -6,6 +6,7 @@ public class Main {
         list.addLast(10);
         list.addLast(20);
         list.addLast(30);
-        list.print();
+        // list.print();
+        System.out.println(list.indexOf(30));
     }
 }

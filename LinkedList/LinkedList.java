@@ -40,14 +40,26 @@ public class LinkedList {
         }
     }
 
-    public void print() {
+    public int indexOf(int data) {
+        int index = 0;
         var ptr = first;
 
-        while (ptr.next != null) {
-            System.out.println(ptr.value);
+        while (ptr != null) {
+            if (ptr.value == data)
+                return index;
+            index++;
             ptr = ptr.next;
         }
 
-        System.out.println(ptr.value);
+        return -1;
+    }
+
+    public void print() {
+        var ptr = first;
+
+        while (ptr != null) {
+            System.out.println(ptr.value);
+            ptr = ptr.next;
+        }
     }
 }
