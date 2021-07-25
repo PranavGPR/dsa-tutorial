@@ -6,6 +6,7 @@ public class LinkedList {
 
     private Node first;
     private Node last;
+    private int size;
 
     private boolean isEmpty() {
         return first == null;
@@ -20,6 +21,7 @@ public class LinkedList {
             last.setNext(newNode);
             last = newNode;
         }
+        size++;
     }
 
     public void addFirst(int data) {
@@ -31,6 +33,39 @@ public class LinkedList {
             newNode.setNext(first);
             first = newNode;
         }
+        size++;
+    }
+
+    public void removeFirst() {
+        if (isEmpty())
+            throw new NoSuchElementException();
+
+        if (first == last) {
+            first = last = null;
+        } else {
+            var second = first.getNext();
+            first.setNext(null);
+            first = second;
+        }
+
+        size--;
+    }
+
+    public void removeLast() {
+
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        if (first == last) {
+            first = last = null;
+        } else {
+            var previous = getPrevious(last);
+            last = previous;
+            last.setNext(null);
+        }
+
+        size--;
     }
 
     public int indexOf(int data) {
@@ -51,34 +86,6 @@ public class LinkedList {
         return indexOf(data) != -1;
     }
 
-    public void removeFirst() {
-        if (isEmpty())
-            throw new NoSuchElementException();
-
-        if (first == last) {
-            first = last = null;
-        }
-
-        var second = first.getNext();
-        first.setNext(null);
-        first = second;
-    }
-
-    public void removeLast() {
-        if (isEmpty()) {
-            throw new NoSuchElementException();
-        }
-
-        if (first == last) {
-            first = last = null;
-            return;
-        }
-
-        var previous = getPrevious(last);
-        last = previous;
-        last.setNext(null);
-    }
-
     private Node getPrevious(Node node) {
         var ptr = first;
         while (ptr != null) {
@@ -87,6 +94,10 @@ public class LinkedList {
             ptr = ptr.getNext();
         }
         return null;
+    }
+
+    public int size() {
+        return size;
     }
 
     public void print() {
