@@ -1,4 +1,4 @@
-package com.src;
+package Array;
 
 public class Array {
 
