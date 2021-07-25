@@ -1,15 +1,8 @@
 package LinkedList;
 
+import java.util.NoSuchElementException;
+
 public class LinkedList {
-
-    private class Node {
-        private int value;
-        private Node next;
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
 
     private Node first;
     private Node last;
@@ -19,23 +12,23 @@ public class LinkedList {
     }
 
     public void addLast(int data) {
-        var newNode = new Node(data);
+        var newNode = new Node(data, null);
 
         if (isEmpty())
             first = last = newNode;
         else {
-            last.next = newNode;
+            last.setNext(newNode);
             last = newNode;
         }
     }
 
     public void addFirst(int data) {
-        var newNode = new Node(data);
+        var newNode = new Node(data, null);
 
         if (isEmpty()) {
             first = last = newNode;
         } else {
-            newNode.next = first;
+            newNode.setNext(first);
             first = newNode;
         }
     }
@@ -45,21 +38,38 @@ public class LinkedList {
         var ptr = first;
 
         while (ptr != null) {
-            if (ptr.value == data)
+            if (ptr.getValue() == data)
                 return index;
             index++;
-            ptr = ptr.next;
+            ptr = ptr.getNext();
         }
 
         return -1;
+    }
+
+    public boolean contains(int data) {
+        return indexOf(data) != -1;
+    }
+
+    public void removeFirst() {
+        if (isEmpty())
+            throw new NoSuchElementException();
+
+        if (first == last) {
+            first = last = null;
+        }
+
+        var second = first.getNext();
+        first.setNext(null);
+        first = second;
     }
 
     public void print() {
         var ptr = first;
 
         while (ptr != null) {
-            System.out.println(ptr.value);
-            ptr = ptr.next;
+            System.out.println(ptr.getValue());
+            ptr = ptr.getNext();
         }
     }
 }
