@@ -14,14 +14,29 @@ public class LinkedList {
     private Node first;
     private Node last;
 
+    private boolean isEmpty() {
+        return first == null;
+    }
+
     public void addLast(int data) {
         var newNode = new Node(data);
 
-        if (first == null)
+        if (isEmpty())
             first = last = newNode;
         else {
             last.next = newNode;
             last = newNode;
+        }
+    }
+
+    public void addFirst(int data) {
+        var newNode = new Node(data);
+
+        if (isEmpty()) {
+            first = last = newNode;
+        } else {
+            newNode.next = first;
+            first = newNode;
         }
     }
 
