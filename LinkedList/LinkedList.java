@@ -14,4 +14,18 @@ public class LinkedList {
     private Node first;
     private Node last;
 
+    public void addLast(int data) {
+        var newNode = new Node(data);
+
+        if (first == null)
+            first = last = newNode;
+        else {
+            last.next = newNode;
+            last = newNode;
+        }
+    }
+
+    public void print() {
+
+    }
 }
