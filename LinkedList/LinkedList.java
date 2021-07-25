@@ -26,6 +26,13 @@ public class LinkedList {
     }
 
     public void print() {
+        var ptr = first;
 
+        while (ptr.next != null) {
+            System.out.println(ptr.value);
+            ptr = ptr.next;
+        }
+
+        System.out.println(ptr.value);
     }
 }
