@@ -100,6 +100,18 @@ public class LinkedList {
         return size;
     }
 
+    public int[] toArray() {
+        int[] array = new int[size];
+        var ptr = first;
+        var index = 0;
+        while (ptr != null) {
+            array[index++] = ptr.getValue();
+            ptr = ptr.getNext();
+        }
+
+        return array;
+    }
+
     public void print() {
         var ptr = first;
 
