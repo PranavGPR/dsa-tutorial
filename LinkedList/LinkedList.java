@@ -129,6 +129,25 @@ public class LinkedList {
         first = previous;
     }
 
+    public void reverse() {
+
+        if (isEmpty())
+            return;
+
+        var previous = first;
+        var current = first.getNext();
+        while (current != null) {
+            var next = current.getNext();
+            current.setNext(previous);
+            previous = current;
+            current = next;
+        }
+
+        last = first;
+        last.setNext(null);
+        first = previous;
+    }
+
     public void print() {
         var ptr = first;
 

@@ -7,7 +7,7 @@ public class Main {
         list.addLast(20);
         list.addLast(30);
         list.print();
-        list.reverseOnOwn();
+        list.reverse();
         list.print();
     }
 }
