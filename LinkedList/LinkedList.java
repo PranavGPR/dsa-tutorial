@@ -175,6 +175,29 @@ public class LinkedList {
         return current.getValue();
     }
 
+    public int getKthNodeFromTheEnd(int k) {
+        if (isEmpty()) {
+            throw new IllegalStateException();
+        }
+
+        var a = first;
+        var b = first;
+
+        for (int i = 0; i < k - 1; i++) {
+            b = b.getNext();
+            if (b == null) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        while (b != last) {
+            a = a.getNext();
+            b = b.getNext();
+        }
+
+        return a.getValue();
+    }
+
     public void print() {
         var ptr = first;
 
