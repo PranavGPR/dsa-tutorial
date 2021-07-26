@@ -148,6 +148,33 @@ public class LinkedList {
         first = previous;
     }
 
+    public int getKthNodeFromEndOnOwn(int k) {
+        if (isEmpty()) {
+            return -1;
+        }
+
+        if (first == last) {
+            return first.getValue();
+        }
+
+        if (first.getNext() == last) {
+            return first.getValue();
+        }
+
+        var current = first;
+        var next = first;
+        for (int i = 0; i < k; i++) {
+            next = next.getNext();
+        }
+
+        while (next != null) {
+            current = current.getNext();
+            next = next.getNext();
+        }
+
+        return current.getValue();
+    }
+
     public void print() {
         var ptr = first;
 

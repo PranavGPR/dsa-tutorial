@@ -6,8 +6,8 @@ public class Main {
         list.addLast(10);
         list.addLast(20);
         list.addLast(30);
-        list.print();
-        list.reverse();
-        list.print();
+        list.addLast(40);
+        list.addLast(50);
+        System.out.println(list.getKthNodeFromEndOnOwn(1));
     }
 }
