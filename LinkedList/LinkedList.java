@@ -112,6 +112,23 @@ public class LinkedList {
         return array;
     }
 
+    public void reverseOnOwn() {
+        Node previous = null;
+        var current = first;
+        Node next = null;
+
+        last = first;
+        last.setNext(null);
+
+        while (current != null) {
+            next = current.getNext();
+            current.setNext(previous);
+            previous = current;
+            current = next;
+        }
+        first = previous;
+    }
+
     public void print() {
         var ptr = first;
 
