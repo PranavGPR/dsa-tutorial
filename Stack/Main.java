@@ -4,14 +4,17 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<Integer>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-        System.out.println(stack);
-        stack.pop();
-        System.out.println(stack);
-        stack.peek();
-        System.out.println(stack);
+        String str = "ab";
+        Stack<Character> stack = new Stack<>();
+        String revStr = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            stack.push(str.charAt(i));
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            revStr += stack.pop();
+        }
+        System.out.println(revStr);
     }
 }
