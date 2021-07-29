@@ -3,11 +3,10 @@ package Queue;
 import java.util.Arrays;
 
 public class ArrayQueue {
-
     private int[] queue;
 
-    public ArrayQueue(int size) {
-        queue = new int[size];
+    public ArrayQueue(int capacity) {
+        queue = new int[capacity];
     }
 
     private int front;
@@ -15,41 +14,39 @@ public class ArrayQueue {
     private int count;
 
     public void enqueue(int item) {
-        if (count == queue.length) {
+        if (isFull())
             throw new IllegalStateException();
-        }
 
         queue[rear] = item;
         rear = (rear + 1) % queue.length;
         count++;
-
     }
 
     public int dequeue() {
+        if (isEmpty())
+            throw new IllegalStateException();
+
         var item = queue[front];
         queue[front] = 0;
         front = (front + 1) % queue.length;
         count--;
+
         return item;
     }
 
     public int peek() {
+        if (isEmpty())
+            throw new IllegalStateException();
+
         return queue[front];
     }
 
     public boolean isEmpty() {
-        if (front < 0 && rear < 0) {
-            return true;
-        }
-        return false;
+        return count == 0;
     }
 
     public boolean isFull() {
-        if (rear == queue.length) {
-            return true;
-        }
-
-        return false;
+        return count == queue.length;
     }
 
     @Override
