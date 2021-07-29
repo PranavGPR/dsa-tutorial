@@ -2,6 +2,7 @@ package Queue;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,8 +10,24 @@ public class Main {
         queue.add(10);
         queue.add(20);
         queue.add(30);
-        var front = queue.remove();
-        System.out.println(front);
+        reverseOnOwn(queue);
         System.out.println(queue);
+    }
+
+    public static void reverseOnOwn(Queue<Integer> queue) {
+        Stack<Integer> stack = new Stack<>();
+
+        if (queue.peek() == null) {
+            throw new IllegalStateException();
+        }
+
+        while (queue.peek() != null) {
+            stack.push(queue.poll());
+        }
+
+        while (!stack.empty()) {
+            queue.add(stack.pop());
+        }
+
     }
 }
