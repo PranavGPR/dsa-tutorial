@@ -5,15 +5,12 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        TwoStackQueue queue = new TwoStackQueue();
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
-        System.out.println(queue.dequeue());
-        queue.enqueue(40);
-        queue.enqueue(50);
-        System.out.println(queue.dequeue());
-
+        PriorityQueue queue = new PriorityQueue();
+        queue.enqueue(3);
+        queue.enqueue(2);
+        queue.enqueue(1);
+        queue.enqueue(5);
+        System.out.println(queue);
     }
 
     public static void reverseOnOwn(Queue<Integer> queue) {
