@@ -8,21 +8,33 @@ public class TwoStackQueue {
 
     public void enqueue(int item) {
         stack1.push(item);
-        System.out.println(stack1);
     }
 
     public int dequeue() {
-        while (!stack1.empty()) {
-            stack2.push(stack1.pop());
+        if (isEmpty()) {
+            throw new IllegalStateException();
         }
+        moveToOtherStack();
+        return stack2.pop();
+    }
 
-        var item = stack2.pop();
-
-        while (!stack2.empty()) {
-            stack1.push(stack2.pop());
+    public int peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException();
         }
+        moveToOtherStack();
+        return stack2.peek();
+    }
 
-        System.out.println(stack1);
-        return item;
+    public boolean isEmpty() {
+        return stack1.isEmpty() && stack2.isEmpty();
+    }
+
+    private void moveToOtherStack() {
+        if (stack2.isEmpty()) {
+            while (!stack1.empty()) {
+                stack2.push(stack1.pop());
+            }
+        }
     }
 }
