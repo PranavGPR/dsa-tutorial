@@ -2,8 +2,11 @@ package Hashtable;
 
 public class Main {
     public static void main(String[] args) {
-        CharFinder finder = new CharFinder();
-        var ch = finder.firstRepeatedChar("a green apple");
-        System.out.println(ch);
+        HashTable table = new HashTable();
+        table.put(6, "a");
+        table.put(8, "b");
+        table.put(11, "c");
+        table.put(6, "a++");
+        System.out.println(table.get(6));
     }
 }

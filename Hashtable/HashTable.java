@@ -33,6 +33,16 @@ public class HashTable {
         bucket.addLast(new Entry(key, value));
     }
 
+    public String get(int key) {
+        var index = hash(key);
+        var bucket = entries[index];
+        if (bucket != null)
+            for (var entry : bucket)
+                if (entry.key == key)
+                    return entry.value;
+        return null;
+    }
+
     private int hash(int key) {
         return key % entries.length;
     }
