@@ -7,7 +7,7 @@ public class Main {
         table.put(8, "b");
         table.put(11, "c");
         table.put(6, "a++");
-        table.remove(60);
+        table.remove(6);
         System.out.println(table.get(6));
     }
 }
