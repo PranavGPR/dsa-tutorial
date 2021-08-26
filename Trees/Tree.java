@@ -99,4 +99,16 @@ public class Tree {
         traverseInOrder(root.rightChild);
     }
 
+    public void traversePostOrder() {
+        traversePostOrder(root);
+    }
+
+    private void traversePostOrder(Node root) {
+        if (root == null)
+            return;
+
+        traversePostOrder(root.rightChild);
+        System.out.println(root.value);
+        traversePostOrder(root.leftChild);
+    }
 }
