@@ -10,7 +10,6 @@ public class Main {
         tree.insert(6);
         tree.insert(8);
         tree.insert(10);
-        System.out.println(tree.find(80));
-        System.out.println("Done");
+        tree.traversePreOrder();
     }
 }
