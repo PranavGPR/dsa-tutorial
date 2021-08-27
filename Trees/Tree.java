@@ -176,4 +176,21 @@ public class Tree {
         return isBinarySearchTree(root.leftChild, min, root.value - 1)
                 && isBinarySearchTree(root.rightChild, root.value + 1, max);
     }
+
+    public void kthNode(int distance) {
+        kthNode(root, distance);
+    }
+
+    private void kthNode(Node root, int distance) {
+        if (root == null)
+            return;
+
+        if (distance == 0) {
+            System.out.println(root.value);
+            return;
+        }
+
+        kthNode(root.leftChild, distance--);
+        kthNode(root.rightChild, distance--);
+    }
 }
