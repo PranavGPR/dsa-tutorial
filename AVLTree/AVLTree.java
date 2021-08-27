@@ -20,7 +20,24 @@ public class AVLTree {
 
         root.height = height(root);
 
+        if (isRightHeavy(root))
+            System.out.println(root.value + " is Right heavy");
+        if (isLeftHeavy(root))
+            System.out.println(root.value + " is Left heavy");
+
         return root;
+    }
+
+    private boolean isLeftHeavy(AVLNode node) {
+        return balanceFactor(node) > 1;
+    }
+
+    private boolean isRightHeavy(AVLNode node) {
+        return balanceFactor(node) < -1;
+    }
+
+    private int balanceFactor(AVLNode node) {
+        return (node == null) ? 0 : height(node.leftChild) - height(node.rightChild);
     }
 
     public int height() {
