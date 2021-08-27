@@ -2,6 +2,7 @@ package AVLTree;
 
 public class AVLNode {
     int value;
+    int height;
     AVLNode leftChild;
     AVLNode rightChild;
 

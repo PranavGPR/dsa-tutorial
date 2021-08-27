@@ -18,6 +18,26 @@ public class AVLTree {
         else
             root.rightChild = insert(root.rightChild, value);
 
+        root.height = height(root);
+
         return root;
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(AVLNode root) {
+        if (root == null)
+            return -1;
+
+        if (isLeaf(root))
+            return 0;
+
+        return 1 + Math.max(height(root.leftChild), height(root.rightChild));
+    }
+
+    private boolean isLeaf(AVLNode node) {
+        return node.leftChild == null && node.rightChild == null;
     }
 }
