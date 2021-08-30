@@ -66,4 +66,20 @@ public class AVLTree {
             System.out.println("Left Rotate " + root.value);
         }
     }
+
+    private AVLNode rotateLeft(AVLNode root) {
+        var newRoot = root.rightChild;
+
+        root.rightChild = newRoot.leftChild;
+        newRoot.leftChild = root;
+
+        setHeight(root);
+        setHeight(newRoot);
+
+        return newRoot;
+    }
+
+    private void setHeight(AVLNode node) {
+        node.height = Math.max(height(node.leftChild), height(node.rightChild)) + 1;
+    }
 }
