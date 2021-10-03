@@ -5,6 +5,6 @@ public class Main {
         var trie = new Trie();
         trie.insert("cat");
         trie.insert("can");
-        System.out.println("Done");
+        System.out.println(trie.contains(null));
     }
 }
