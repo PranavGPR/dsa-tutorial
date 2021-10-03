@@ -5,8 +5,10 @@ public class Main {
         var trie = new Trie();
         trie.insert("car");
         trie.insert("care");
-        trie.remove("car");
-        System.out.println(trie.contains("car"));
-        System.out.println(trie.contains("care"));
+        trie.insert("card");
+        trie.insert("careful");
+        trie.insert("egg");
+        var words = trie.findWords("car");
+        System.out.println(words);
     }
 }
